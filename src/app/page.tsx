@@ -1,95 +1,68 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+import React from "react";
+import { Container, Navbar, Nav, Row, Col, Button } from "react-bootstrap";
+import { FaPalette, FaSprayCan, FaStar, FaSignInAlt } from "react-icons/fa"; // Importamos el icono de iniciar sesión
 
-export default function Home() {
+const Menu = () => {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <Container className="text-center" fluid style={{ backgroundColor: "#fff", minHeight: "100vh" }}>
+        {/* Barra de navegación */}
+        <Navbar bg="light" expand="lg">
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mx-auto">
+              <Nav.Link href="#bienvenido" style={{ color: "#e91e63" }}>
+                <FaPalette /> Inicio
+              </Nav.Link>
+              <Nav.Link href="#explicacion" style={{ color: "#e91e63" }}>
+                <FaSprayCan /> ¿Quiénes Somos?
+              </Nav.Link>
+              <Nav.Link href="#populares" style={{ color: "#e91e63" }}>
+                <FaStar /> Populares
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        {/* Sección Bienvenida */}
+        <Row id="bienvenido" className="my-5" style={{ backgroundColor: "#fce4ec", padding: "20px" }}>
+          <Col>
+            <h2 style={{ color: "#e91e63" }}>BIENVENIDOS A MAQUILLAJE ASIÁTICO</h2>
+            <p>En esta página encontrarás las opiniones sobre los mejores maquillajes asiáticos de la web.</p>
+          </Col>
+        </Row>
+
+        {/* Sección ¿Quiénes somos? */}
+        <Row id="explicacion" className="my-5" style={{ backgroundColor: "#f8bbd0", padding: "20px" }}>
+          <Col>
+            <h2 style={{ color: "#e91e63" }}>¿QUIÉNES SOMOS?</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur, arcu at vulputate congue, justo purus fermentum lectus, at aliquet nunc lectus ac enim. Nullam vel neque sed felis finibus varius.
+            </p>
+          </Col>
+        </Row>
+
+        {/* Sección Populares */}
+        <Row id="populares" className="my-5" style={{ backgroundColor: "#fce4ec", padding: "20px" }}>
+          <Col>
+            <h2 style={{ color: "#e91e63" }}>POPULARES</h2>
+            <img src="your-image-path.jpg" alt="Populares" style={{ width: '100%', height: 'auto' }} />
+            <p>Estos son algunos de los maquillajes más populares de la web.</p>
+          </Col>
+        </Row>
+
+        {/* Botón para iniciar sesión */}
+        <Button 
+          variant="primary" 
+          style={{ backgroundColor: "#e91e63", borderColor: "#e91e63", display: "inline-flex", alignItems: "center" }} 
+          href="/...Login"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <FaSignInAlt style={{ marginRight: "8px" }} /> Iniciar sesión
+        </Button>
+      </Container>
+    </>
   );
-}
+};
+
+export default Menu;
