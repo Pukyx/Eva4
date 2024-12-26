@@ -1,21 +1,28 @@
-'use client'; 
-import { Container, Navbar, Nav, Row, Col, Button, ListGroup } from "react-bootstrap";
+'use client';
+import { Container, Navbar, Nav, Row, Col } from "react-bootstrap";
 import { FaPalette, FaSprayCan, FaStar } from "react-icons/fa";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-const Menu = () => {
-  const router = useRouter();
 
+const Menu = () => {
   return (
     <>
-    <Navbar bg="dark" variant="dark">
-      <Container>
-        <Navbar.Brand as={Link} href="/">BIENVENIDO</Navbar.Brand>
-        <Nav className="me-auto">
-          <Nav.Link as={Link} href="/Login">Iniciar Sesion</Nav.Link>
-        </Nav>
-      </Container>
-    </Navbar>
+      <Navbar bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand as="div">
+            <Link href="/" passHref>
+              BIENVENIDO
+            </Link>
+          </Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link as="div">
+              <Link href="/Login" passHref>
+                Iniciar Sesión
+              </Link>
+            </Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+
       <Container className="text-center" fluid style={{ backgroundColor: "#fff", minHeight: "100vh" }}>
         {/* Barra de navegación */}
         <Navbar bg="light" expand="lg">
@@ -59,8 +66,6 @@ const Menu = () => {
             <p>Estos son algunos de los maquillajes más populares de la web.</p>
           </Col>
         </Row>
-
-
       </Container>
     </>
   );
