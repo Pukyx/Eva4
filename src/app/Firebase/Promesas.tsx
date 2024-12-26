@@ -1,4 +1,4 @@
-import { Persona, Usuario } from "@/app/Interfaces/Interfaces";
+import { Persona, Usuario } from "@/Interfaces/Interfaces";
 import { addDoc, collection, getDocs, doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
 import { db } from "./Firebase";
 

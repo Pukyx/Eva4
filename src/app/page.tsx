@@ -1,68 +1,76 @@
 'use client';
-import React from "react";
-import { Container, Navbar, Nav, Row, Col, Button } from "react-bootstrap";
-import { FaPalette, FaSprayCan, FaStar, FaSignInAlt } from "react-icons/fa"; // Importamos el icono de iniciar sesión
 
-const Menu = () => {
+import { verificarUsuario } from "@/app/Firebase/Promesas";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
+
+const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    console.log("Iniciando proceso de login...");
+    
+    try {
+      const eUsuario = await verificarUsuario(username, password);
+
+      if (eUsuario) {
+        console.log("Usuario encontrado, intentando navegar...");
+        router.replace('/Menu'); // Cambiamos a minúsculas y usamos replace
+      } else {
+        console.log("Nombre de usuario o contraseña incorrectos");
+        alert("Nombre de usuario o contraseña inválidos");
+      }
+    } catch (error) {
+      console.error("Error durante el inicio de sesión:", error);
+      alert("Error al intentar iniciar sesión");
+    }
+  };
+
   return (
-    <>
-      <Container className="text-center" fluid style={{ backgroundColor: "#fff", minHeight: "100vh" }}>
-        {/* Barra de navegación */}
-        <Navbar bg="light" expand="lg">
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mx-auto">
-              <Nav.Link href="#bienvenido" style={{ color: "#e91e63" }}>
-                <FaPalette /> Inicio
-              </Nav.Link>
-              <Nav.Link href="#explicacion" style={{ color: "#e91e63" }}>
-                <FaSprayCan /> ¿Quiénes Somos?
-              </Nav.Link>
-              <Nav.Link href="#populares" style={{ color: "#e91e63" }}>
-                <FaStar /> Populares
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+    <Container className="mt-5">
+      <Row className="justify-content-center">
+        <Col md={6}>
+          <h2 className="text-center mb-4">Iniciar sesión</h2>
+          <Form onSubmit={handleLogin}>
+            <Form.Group className="mb-3">
+              <Form.Label>Nombre de usuario</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Ingresa tu nombre de usuario"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </Form.Group>
 
-        {/* Sección Bienvenida */}
-        <Row id="bienvenido" className="my-5" style={{ backgroundColor: "#fce4ec", padding: "20px" }}>
-          <Col>
-            <h2 style={{ color: "#e91e63" }}>BIENVENIDOS A MAQUILLAJE ASIÁTICO</h2>
-            <p>En esta página encontrarás las opiniones sobre los mejores maquillajes asiáticos de la web.</p>
-          </Col>
-        </Row>
+            <Form.Group className="mb-3">
+              <Form.Label>Contraseña</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Ingresa tu contraseña"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </Form.Group>
 
-        {/* Sección ¿Quiénes somos? */}
-        <Row id="explicacion" className="my-5" style={{ backgroundColor: "#f8bbd0", padding: "20px" }}>
-          <Col>
-            <h2 style={{ color: "#e91e63" }}>¿QUIÉNES SOMOS?</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur, arcu at vulputate congue, justo purus fermentum lectus, at aliquet nunc lectus ac enim. Nullam vel neque sed felis finibus varius.
-            </p>
-          </Col>
-        </Row>
-
-        {/* Sección Populares */}
-        <Row id="populares" className="my-5" style={{ backgroundColor: "#fce4ec", padding: "20px" }}>
-          <Col>
-            <h2 style={{ color: "#e91e63" }}>POPULARES</h2>
-            <img src="your-image-path.jpg" alt="Populares" style={{ width: '100%', height: 'auto' }} />
-            <p>Estos son algunos de los maquillajes más populares de la web.</p>
-          </Col>
-        </Row>
-
-        {/* Botón para iniciar sesión */}
-        <Button 
-          variant="primary" 
-          style={{ backgroundColor: "#e91e63", borderColor: "#e91e63", display: "inline-flex", alignItems: "center" }} 
-          href="/...Login"
-        >
-          <FaSignInAlt style={{ marginRight: "8px" }} /> Iniciar sesión
-        </Button>
-      </Container>
-    </>
+            <Button 
+              variant="primary" 
+              type="submit" 
+              className="w-100"
+            >
+              Iniciar sesión
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
-export default Menu;
+export default Login;
+

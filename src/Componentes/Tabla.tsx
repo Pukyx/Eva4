@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { obtenerPersonas, eliminarPersona } from "@/app/Firebase/Promesas";
 import { Table, Container, Row, Col, Button, Modal } from "react-bootstrap";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -12,7 +13,7 @@ export const Tabla = () => {
       obtenerPersonas()
         .then((personas) => {
           console.log(personas);
-          setSocios(personas);
+          setPersonas(personas);
         })
         .catch((e) => {
           alert("No se logran cargar los datos");

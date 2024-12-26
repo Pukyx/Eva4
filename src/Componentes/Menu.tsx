@@ -1,35 +1,78 @@
-import React from 'react';
-import { Button, Container, Row, Col } from 'react-bootstrap';
-import { FaUserPlus, FaTag, FaEye, FaSignOutAlt } from 'react-icons/fa';
+import { useRouter } from "next/router";
+import React from "react";
+import { Col, Container, Row, ListGroup, Button } from "react-bootstrap";
 
 const Menu = () => {
+  const router = useRouter();
   return (
-    <Container fluid style={{ backgroundColor: '#fff', minHeight: '100vh', padding: '20px' }}>
-      <h2 style={{ color: '#ff69b4', textAlign: 'center', marginBottom: '30px' }}>Menú Principal</h2>
-
+    <Container
+      fluid
+      className="p-5"
+      style={{ backgroundColor: "#fff", minHeight: "100vh" }}
+    >
       <Row className="justify-content-center">
-        <Col xs={12} md={6} lg={4} className="mb-3">
-          <Button href="#registrarUsuario" variant="light" style={{ width: '100%', padding: '15px', borderRadius: '30px', border: '2px solid #ff69b4', color: '#000' }}>
-            <FaUserPlus style={{ marginRight: '10px' }} /> Registrar nuevo usuario
-          </Button>
-        </Col>
+        <Col md={6}>
+          <ListGroup>
+            {/* Registrar nueva persona */}
+            <ListGroup.Item
+              action
+              onClick={() => router.push("/FormularioUsuario")}
+              className="text-center"
+            >
+              <Button
+                variant="danger"
+                className="w-100"
+                style={{ backgroundColor: "#e91e63", borderColor: "#e91e63" }}
+              >
+                Registrar nuevo Usuario
+              </Button>
+            </ListGroup.Item>
 
-        <Col xs={12} md={6} lg={4} className="mb-3">
-          <Button href="#registroTematica" variant="light" style={{ width: '100%', padding: '15px', borderRadius: '30px', border: '2px solid #ff69b4', color: '#000' }}>
-            <FaTag style={{ marginRight: '10px' }} /> Registro según temática
-          </Button>
-        </Col>
+            {/* Registrar nuevo usuario */}
+            <ListGroup.Item
+              action
+              onClick={() => router.push("/FormularioPersona")}
+              className="text-center"
+            >
+              <Button
+                variant="danger"
+                className="w-100"
+                style={{ backgroundColor: "#e91e63", borderColor: "#e91e63" }}
+              >
+                Registrar nueva Persona
+              </Button>
+            </ListGroup.Item>
 
-        <Col xs={12} md={6} lg={4} className="mb-3">
-          <Button href="#visualizarRegistros" variant="light" style={{ width: '100%', padding: '15px', borderRadius: '30px', border: '2px solid #ff69b4', color: '#000' }}>
-            <FaEye style={{ marginRight: '10px' }} /> Visualizar lo registrado
-          </Button>
-        </Col>
+            {/* Visualizar registros de personas */}
+            <ListGroup.Item
+              action
+              onClick={() => router.push("/Tabla")}
+              className="text-center"
+            >
+              <Button
+                variant="danger"
+                className="w-100"
+                style={{ backgroundColor: "#e91e63", borderColor: "#e91e63" }}
+              >
+                Visualizar registros de personas
+              </Button>
+            </ListGroup.Item>
 
-        <Col xs={12} md={6} lg={4} className="mb-3">
-          <Button href="#salir" variant="light" style={{ width: '100%', padding: '15px', borderRadius: '30px', border: '2px solid #ff69b4', color: '#000' }}>
-            <FaSignOutAlt style={{ marginRight: '10px' }} /> Salir
-          </Button>
+            {/* Salir */}
+            <ListGroup.Item
+              action
+              onClick={() => router.push("/")}
+              className="text-center"
+            >
+              <Button
+                variant="danger"
+                className="w-100"
+                style={{ backgroundColor: "#e91e63", borderColor: "#e91e63" }}
+              >
+                Salir
+              </Button>
+            </ListGroup.Item>
+          </ListGroup>
         </Col>
       </Row>
     </Container>
@@ -37,4 +80,5 @@ const Menu = () => {
 };
 
 export default Menu;
+
 

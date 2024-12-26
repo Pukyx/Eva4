@@ -1,5 +1,5 @@
 'use client';
-import { initialStatePersona } from "@/InitialStates/Persona";
+import { initialSatePersona } from "@/InitialStates/Persona";
 import { modificarPersona, obtenerPersona } from "@/app/Firebase/Promesas";
 import { Persona } from "@/Interfaces/Interfaces";
 import { useRouter } from "next/router";
@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
 export const Editar = () => {
-  const [persona, setPersona] = useState<Persona>(initialStatePersona);
+  const [persona, setPersona] = useState<Persona>(initialSatePersona);
   
   const handlePersona = (name: string, value: string) => {
     setPersona({ ...persona, [name]: value });
