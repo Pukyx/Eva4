@@ -1,5 +1,5 @@
 'use client';
-import { registrarPersona } from "@/app/Firebase/Promesas";
+import { registrarPersona } from "../../Firebase/Promesas";
 import { initialSatePersona } from "@/InitialStates/Persona";
 import { Persona } from "@/Interfaces/Interfaces";
 import React, { useState } from 'react';

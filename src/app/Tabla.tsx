@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { obtenerPersonas, eliminarPersona } from "@/app/Firebase/Promesas";
+import { obtenerPersonas, eliminarPersona } from "../../Firebase/Promesas";
 import { Table, Container, Row, Col, Button, Modal } from "react-bootstrap";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";

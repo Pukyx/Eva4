@@ -1,4 +1,4 @@
-import { registrarUsuario } from "@/app/Firebase/Promesas";
+import { registrarUsuario } from "../../Firebase/Promesas";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";

@@ -1,6 +1,6 @@
 'use client';
 import { initialSatePersona } from "@/InitialStates/Persona";
-import { modificarPersona, obtenerPersona } from "@/app/Firebase/Promesas";
+import { modificarPersona, obtenerPersona } from "../../Firebase/Promesas";
 import { Persona } from "@/Interfaces/Interfaces";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
